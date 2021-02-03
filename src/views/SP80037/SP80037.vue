@@ -47,6 +47,10 @@ export default {
       page: this.page
     });
     this.$store.dispatch("publication/getPublication", id);
+    this.$store.dispatch("businessrole/getBusinessRoles", {
+      perPage: this.perPage,
+      page: this.page
+    });
   },
   computed: {
     page() {
@@ -55,7 +59,7 @@ export default {
     hasNextPage() {
       return this.step.stepsTotal > this.page * this.perPage;
     },
-    ...mapState(["step", "publication"])
+    ...mapState(["step", "publication", "businessrole"])
   }
 };
 </script>

@@ -16,40 +16,40 @@
         </tr>
         <tr>
           <td align="left">
-            <ul v-for="outcome in task.Outcomes" :key="outcome">
-              <li>{{ outcome }}</li>
+            <ul>
+              <li v-for="outcome in task.Outcomes" :key="outcome">
+                {{ outcome }}
+              </li>
             </ul>
           </td>
-        </tr>
-        <tr>
-          <td><p /></td>
         </tr>
         <tr>
           <td align="left">Potential Inputs:</td>
         </tr>
         <tr>
           <td align="left">
-            <ul
-              v-for="potentialInput in task.PotentialInputs"
-              :key="potentialInput"
-            >
-              <li>{{ potentialInput }}</li>
+            <ul>
+              <li
+                v-for="potentialInput in task.PotentialInputs"
+                :key="potentialInput"
+              >
+                {{ potentialInput }}
+              </li>
             </ul>
           </td>
-        </tr>
-        <tr>
-          <td><p /></td>
         </tr>
         <tr>
           <td align="left">Expected Outputs:</td>
         </tr>
         <tr>
           <td align="left">
-            <ul
-              v-for="expectedOutput in task.ExpectedOutputs"
-              :key="expectedOutput"
-            >
-              <li>{{ expectedOutput }}</li>
+            <ul>
+              <li
+                v-for="expectedOutput in task.ExpectedOutputs"
+                :key="expectedOutput"
+              >
+                {{ expectedOutput }}
+              </li>
             </ul>
           </td>
         </tr>
@@ -58,11 +58,13 @@
         </tr>
         <tr>
           <td align="left">
-            <ul
-              v-for="responsibility in task.PrimaryResponsibility.Roles.Role"
-              :key="responsibility"
-            >
-              <li>{{ responsibility }}</li>
+            <ul>
+              <li
+                v-for="responsibility in task.PrimaryResponsibility.Roles.Role"
+                :key="responsibility"
+              >
+                {{ responsibility }}
+              </li>
             </ul>
           </td>
         </tr>
