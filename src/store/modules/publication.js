@@ -20,10 +20,11 @@ export const mutations = {
 };
 
 export const actions = {
-  getPublications({ commit }, { perPage, page }) {
-    console.log("publication.getPublications ... start");
-    Service.getPublications(perPage, page)
+  getPublications({ commit }) {
+    console.log("\n... publication.getPublications():  start");
+    Service.getPublications()
       .then(response => {
+        console.log(response);
         commit("SET_PUBLICATIONS", response.data);
         commit(
           "SET_PUBLICATIONS_TOTAL",
@@ -34,17 +35,18 @@ export const actions = {
         console.log("There was an error:" + error.response);
       });
   },
-  getPublication({ commit, getters }, id) {
-    console.log("publications.getPublication ... start");
-    console.log("publications.getPublication.id = " + id);
-    var publication = getters.getPublicationById(id);
-    console.log("publications.getPublication.publication = " + publication);
+  getPublication({ commit, getters }, Publication) {
+    console.log("\n... publication.getPublication():  start");
+    console.log("publication.getPublication.Publication = " + Publication);
+    var publication = getters.getPublicationByPublication(Publication);
+    console.log("publication.getPublication.publication = " + publication);
 
     if (publication) {
       commit("SET_PUBLICATION", publication);
     } else {
-      Service.getPublication(id)
+      Service.getPublication(publication)
         .then(response => {
+          console.log(response);
           commit("SET_PUBLICATION", response.data);
         })
         .catch(error => {
@@ -55,9 +57,13 @@ export const actions = {
 };
 
 export const getters = {
-  getPublicationById: state => id => {
-    console.log("publication.getPublicationById ... start");
-    console.log("publication.getPublicationById.id = " + id);
-    return state.publications.find(publication => publication.id === id);
+  getPublicationByPublication: state => Publication => {
+    console.log("\n... publication.getPublicationByPublication:  start");
+    console.log(
+      "publication.getPublicationByPublication.Publication = " + Publication
+    );
+    return state.publications.find(
+      publication => publication.Publication === Publication
+    );
   }
 };

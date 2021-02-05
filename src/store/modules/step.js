@@ -21,8 +21,9 @@ export const mutations = {
 };
 
 export const actions = {
-  getSteps({ commit }, { perPage, page }) {
-    Service.getSteps(perPage, page)
+  getSteps({ commit }) {
+    console.log("\n ...steps.getSteps():  start");
+    Service.getSteps()
       .then(response => {
         commit("SET_STEPS", response.data);
         commit("SET_STEPS_TOTAL", parseInt(response.headers["x-total-count"]));
@@ -32,7 +33,9 @@ export const actions = {
       });
   },
   getStep({ commit, getters }, id) {
+    console.log("\n ...steps.getStep():  start");
     var step = getters.getStepById(id);
+    console.log("step.getStep().step.id = " + step.id);
 
     if (step) {
       commit("SET_STEP", step);
@@ -50,6 +53,8 @@ export const actions = {
 
 export const getters = {
   getStepById: state => id => {
+    console.log("\n... steps.getStepById():  start");
+    console.log("steps.getStepById().id = " + id);
     return state.steps.find(step => step.id === id);
   }
 };

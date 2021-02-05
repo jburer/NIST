@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiClient = axios.create({
+const stepsAPI = axios.create({
   baseURL: "http://localhost:3000",
   withCredentials: false,
   headers: {
@@ -9,23 +9,47 @@ const apiClient = axios.create({
   }
 });
 
+const publicationsAPI = axios.create({
+  baseURL: "http://localhost:3002",
+  withCredentials: false,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  }
+});
+
+const businessroleAPI = axios.create({
+  baseURL: "http://localhost:3001",
+  withCredentials: false,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  }
+});
+
 export default {
-  getSteps(perPage, page) {
-    return apiClient.get("/Steps?_limit=" + perPage + "&_page=" + page);
+  getSteps() {
+    console.log("\n... Service.getSteps:  start");
+    return stepsAPI.get("/Steps");
   },
   getStep(id) {
-    return apiClient.get("/Steps/" + id);
+    console.log("\n... Service.getStep:  start");
+    return stepsAPI.get("/Steps/" + id);
   },
-  getPublications(perPage, page) {
-    return apiClient.get("/Publications?_limit=" + perPage + "&_page=" + page);
+  getPublications() {
+    console.log("\n... Service.getPublications():  start");
+    return publicationsAPI.get("/Publications");
   },
-  getPublication(id) {
-    return apiClient.get("/Publications/" + id);
+  getPublication(publication) {
+    console.log("\n... Service.getPublication:  start");
+    return publicationsAPI.get("/Publications?Publication=" + publication);
   },
-  getBusinessRoles(perPage, page) {
-    return apiClient.get("/Roles?_limit=" + perPage + "&_page=" + page);
+  getBusinessRoles() {
+    console.log("\n... Service.getBusinessRoles:  start");
+    return businessroleAPI.get("/Roles");
   },
-  getBusinessRole(id) {
-    return apiClient.get("/Roles/" + id);
+  getBusinessRole(businessrole) {
+    console.log("\n... Service.getBusinessRole:  start");
+    return businessroleAPI.get("/Roles?Role=" + businessrole);
   }
 };

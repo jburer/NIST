@@ -1,10 +1,11 @@
 <template>
   <div>
     <h3 align="left">
-      {{ publication.publication.Title }}<br /><a
-        :href="publication.publication.Link"
-        >{{ publication.publication.Publication }}</a
-      >
+      {{ publication.publication.Title }}<br />
+      {{ publication.publication.SubTitle }}<br />
+      <a :href="publication.publication.Link">{{
+        publication.publication.Publication
+      }}</a>
     </h3>
     <h3 align="left"></h3>
 
@@ -30,27 +31,23 @@ import Card from "@/components/Card.vue";
 import { mapState } from "vuex";
 
 export default {
+  /*
+  props: {
+    Publications: Array
+  },
+  */
   components: {
     Card
   },
   created() {
-    console.log("SP80037.created ... start");
-    var id = "SP80039R2";
-    console.log("SP80037.created.id = " + id);
-    this.perPage = 3;
-    this.$store.dispatch("step/getSteps", {
-      perPage: this.perPage,
-      page: this.page
-    });
-    this.$store.dispatch("publication/getPublications", {
-      perPage: this.perPage,
-      page: this.page
-    });
-    this.$store.dispatch("publication/getPublication", id);
-    this.$store.dispatch("businessrole/getBusinessRoles", {
-      perPage: this.perPage,
-      page: this.page
-    });
+    console.log("\n... SP80037.created():  start");
+
+    this.$store.dispatch("step/getSteps");
+    this.$store.dispatch("businessrole/getBusinessRoles");
+
+    var Publication = "SP 800-37 Rev. 2";
+    console.log("SP80037.created().Publication = " + Publication);
+    this.$store.dispatch("publication/getPublication", Publication);
   },
   computed: {
     page() {

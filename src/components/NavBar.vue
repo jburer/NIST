@@ -1,10 +1,6 @@
 <template>
   <div id="nav" class="nav">
     <router-link to="/" class="brand">NIST</router-link>
-
-    <nav>
-      <router-link :to="{ name: 'SP80037' }">SP 800-37</router-link>
-    </nav>
   </div>
 </template>
 

@@ -2,12 +2,6 @@
   <div>
     <h1 class="title">{{ step.Step }} {{ step.ID }}</h1>
     <SubCard v-for="task in step.Tasks" :key="task.ID" :task="task" />
-    <!--<div class="step-header">
-      <p v-for="task in step.Tasks" :key="task.ID">
-        {{ task.ID }}
-        {{ task.Title }}
-      </p>
-    </div>-->
   </div>
 </template>
 
@@ -21,9 +15,11 @@ export default {
     SubCard
   },
   created() {
-    console.log("Step.create() ...");
+    console.log("... Step.create(): ... start");
     this.getStep(this.id);
-    console.log("this.getStep(this.id) = " + this.getStep(this.id));
+    console.log(
+      "Step.created():  this.getStep(this.id) = " + this.getStep(this.id)
+    );
   },
   computed: mapState({
     step: state => state.step.step
