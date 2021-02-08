@@ -31,11 +31,6 @@ import Card from "@/components/Card.vue";
 import { mapState } from "vuex";
 
 export default {
-  /*
-  props: {
-    Publications: Array
-  },
-  */
   components: {
     Card
   },
@@ -43,7 +38,7 @@ export default {
     console.log("\n... SP80037.created():  start");
 
     this.$store.dispatch("step/getSteps");
-    this.$store.dispatch("businessrole/getBusinessRoles");
+    //this.$store.dispatch("businessrole/getBusinessRoles");
 
     var Publication = "SP 800-37 Rev. 2";
     console.log("SP80037.created().Publication = " + Publication);
@@ -56,7 +51,7 @@ export default {
     hasNextPage() {
       return this.step.stepsTotal > this.page * this.perPage;
     },
-    ...mapState(["step", "publication", "businessrole"])
+    ...mapState(["step", "publication"])
   }
 };
 </script>

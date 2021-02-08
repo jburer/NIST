@@ -15,7 +15,7 @@ export default {
     SubCard
   },
   created() {
-    console.log("... Step.create(): ... start");
+    console.log("\n... Step.create(): ... start");
     this.getStep(this.id);
     console.log(
       "Step.created():  this.getStep(this.id) = " + this.getStep(this.id)

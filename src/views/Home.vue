@@ -2,15 +2,13 @@
   <div>
     This is a sample app.
     <p>
-      <router-link :to="{ name: 'SP80037', params: { Publications } }"
-        >SP 800-37</router-link
-      >
+      <router-link :to="{ name: 'SP80037' }">SP 800-37</router-link>
     </p>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+//import { mapState } from "vuex";
 
 export default {
   created() {
@@ -21,11 +19,13 @@ export default {
 
     this.$store.dispatch("businessrole/getBusinessRoles");
     console.log("Home.created().BusinessRoles = " + this.BusinessRoles);
-  },
+  }
+  /*
   computed: mapState({
     Publications: state => state.publication.publications,
     BusinessRoles: state => state.businessrole.businessroles
   })
+  */
 };
 </script>
 

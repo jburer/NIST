@@ -10,7 +10,7 @@ const stepsAPI = axios.create({
 });
 
 const publicationsAPI = axios.create({
-  baseURL: "http://localhost:3002",
+  baseURL: "http://localhost:3001",
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -19,7 +19,7 @@ const publicationsAPI = axios.create({
 });
 
 const businessroleAPI = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: "http://localhost:3002",
   withCredentials: false,
   headers: {
     Accept: "application/json",
