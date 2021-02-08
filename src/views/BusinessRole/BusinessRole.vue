@@ -1,9 +1,11 @@
 <template>
   <div class="step-header">
+    {{ businessrole }}
+    {{ businessrole.id }}
     <table>
       <tr>
-        <td align="left">Publication:</td>
-        <td align="left">{{ businessrole }}</td>
+        <td align="left">{{ businessrole.Role }}:</td>
+        <td align="left">{{ businessrole.Responsibilities }}</td>
       </tr>
     </table>
   </div>
