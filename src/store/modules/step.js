@@ -12,9 +12,11 @@ export const mutations = {
   SET_STEPS(state, steps) {
     state.steps = steps;
   },
+  /*
   SET_STEPS_TOTAL(state, stepsTotal) {
     state.stepsTotal = stepsTotal;
   },
+  */
   SET_STEP(state, step) {
     state.step = step;
   }
@@ -26,7 +28,7 @@ export const actions = {
     Service.getSteps()
       .then(response => {
         commit("SET_STEPS", response.data);
-        commit("SET_STEPS_TOTAL", parseInt(response.headers["x-total-count"]));
+        //commit("SET_STEPS_TOTAL", parseInt(response.headers["x-total-count"]));
       })
       .catch(error => {
         console.log("There was an error:" + error.response);

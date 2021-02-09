@@ -11,9 +11,11 @@ export const mutations = {
   SET_PUBLICATION(state, publication) {
     state.publication = publication;
   },
+  /*
   SET_PUBLICATIONS_TOTAL(state, publicationsTotal) {
     state.publicationsTotal = publicationsTotal;
   },
+  */
   SET_PUBLICATIONS(state, publications) {
     state.publications = publications;
   }
@@ -26,10 +28,12 @@ export const actions = {
       .then(response => {
         console.log(response);
         commit("SET_PUBLICATIONS", response.data);
+        /*
         commit(
           "SET_PUBLICATIONS_TOTAL",
           parseInt(response.headers["x-total-count"])
         );
+        */
       })
       .catch(error => {
         console.log("There was an error:" + error.response);

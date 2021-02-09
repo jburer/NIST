@@ -11,9 +11,11 @@ export const mutations = {
   SET_BUSSINESSROLE(state, businessrole) {
     state.businessrole = businessrole;
   },
+  /*
   SET_BUSSINESSROLES_TOTAL(state, businessrolesTotal) {
     state.businessrolesTotal = businessrolesTotal;
   },
+  */
   SET_BUSSINESSROLES(state, businessroles) {
     state.businessroles = businessroles;
   }
@@ -26,25 +28,27 @@ export const actions = {
       .then(response => {
         console.log(response);
         commit("SET_BUSSINESSROLES", response.data);
+        /*
         commit(
           "SET_BUSSINESSROLES_TOTAL",
           parseInt(response.headers["x-total-count"])
         );
+        */
       })
       .catch(error => {
         console.log("There was an error:" + error.response);
       });
   },
-  getBusinessRole({ commit, getters }, id) {
+  getBusinessRole({ commit, getters }, BusinessRole) {
     console.log("\n... businessrole.getBusinessRole():  start");
-    console.log("businessrole.getBusinessRole.id = " + id);
-    var businessrole = getters.getBusinessRoleByRole(id);
+    console.log("businessrole.getBusinessRole.BusinessRole = " + BusinessRole);
+    var businessrole = getters.getBusinessRoleByRole(BusinessRole);
     console.log("businessroles.getBusinessRole.businessrole = " + businessrole);
 
     if (businessrole) {
       commit("SET_BUSSINESSROLE", businessrole);
     } else {
-      Service.getBusinessRole(id)
+      Service.getBusinessRole(businessrole)
         .then(response => {
           console.log(response);
           commit("SET_BUSSINESSROLE", response.data);
@@ -63,7 +67,7 @@ export const getters = {
       "businessrole.getBusinessRoleByRole.BusinessRole = " + BusinessRole
     );
     return state.businessroles.find(
-      businessrole => businessrole.BusinessRole === BusinessRole
+      businessrole => businessrole.Role === BusinessRole
     );
   }
 };

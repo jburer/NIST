@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const stepsAPI = axios.create({
+const SP80037R2API = axios.create({
   baseURL: "http://localhost:3000",
   withCredentials: false,
   headers: {
@@ -27,14 +27,33 @@ const businessroleAPI = axios.create({
   }
 });
 
+const FIPS200API = axios.create({
+  baseURL: "http://localhost:3003",
+  withCredentials: false,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  }
+});
+
 export default {
   getSteps() {
     console.log("\n... Service.getSteps:  start");
-    return stepsAPI.get("/Steps");
+    return SP80037R2API.get("/Steps");
   },
   getStep(id) {
     console.log("\n... Service.getStep:  start");
-    return stepsAPI.get("/Steps/" + id);
+    return SP80037R2API.get("/Steps/" + id);
+  },
+  getMinimumRequirements() {
+    console.log("\n... Service.getMinimumRequirements:  start");
+    return FIPS200API.get("/MinimumRequirements");
+  },
+  getMinimumRequirement(ControlFamilyID) {
+    console.log("\n... Service.getMinimumRequirement:  start");
+    return FIPS200API.get(
+      "/MinimumRequirements?ControlFamilyID=" + ControlFamilyID
+    );
   },
   getPublications() {
     console.log("\n... Service.getPublications():  start");

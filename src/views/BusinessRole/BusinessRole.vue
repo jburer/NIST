@@ -1,11 +1,27 @@
 <template>
   <div class="step-header">
-    {{ businessrole }}
-    {{ businessrole.id }}
     <table>
       <tr>
         <td align="left">{{ businessrole.Role }}:</td>
-        <td align="left">{{ businessrole.Responsibilities }}</td>
+      </tr>
+      <tr>
+        <td align="left">
+          <p
+            v-for="responsibility in businessrole.Responsibilities"
+            :key="responsibility.id"
+          >
+            <span v-if="typeof responsibility === 'object'">
+              <ul>
+                <li v-for="item in responsibility.List" :key="item">
+                  {{ item }}
+                </li>
+              </ul>
+            </span>
+            <span v-else>
+              {{ responsibility }}
+            </span>
+          </p>
+        </td>
       </tr>
     </table>
   </div>
@@ -18,12 +34,28 @@ export default {
   props: ["BusinessRole"],
   created() {
     console.log("\n... BusinessRole.create():  start");
+    console.log(
+      "BusinessRole.create().this.BusinessRole type = " +
+        typeof this.BusinessRole
+    );
 
-    this.$store.dispatch("businessrole/getBusinessRoles");
+    //this.$store.dispatch("businessrole/getBusinessRoles");
     this.getBusinessRole(this.BusinessRole);
 
     console.log(
       "BusinessRole.create().this.BusinessRole = " + this.BusinessRole
+    );
+    console.log(
+      "BusinessRole.create().this.BusinessRole type = " +
+        typeof this.BusinessRole
+    );
+
+    console.log(
+      "BusinessRole.create().this.businessrole = " + this.businessrole
+    );
+    console.log(
+      "BusinessRole.create().this.businessrole type = " +
+        typeof this.businessrole
     );
   },
   computed: mapState({

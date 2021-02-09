@@ -30,11 +30,22 @@ export default {
   props: ["Publication"],
   created() {
     console.log("\n... Publication.create():  start");
+    console.log(
+      "Publication.create().this.Publication type = " + typeof this.Publication
+    );
 
-    this.$store.dispatch("publication/getPublications");
+    //this.$store.dispatch("publication/getPublications");
     this.getPublication(this.Publication);
 
     console.log("Publication.create().this.Publication = " + this.Publication);
+    console.log(
+      "Publication.create().this.Publication type = " + typeof this.Publication
+    );
+
+    console.log("Publication.create().this.publication = " + this.publication);
+    console.log(
+      "Publication.create().this.publication type = " + typeof this.publication
+    );
   },
   computed: mapState({
     publication: state => state.publication.publication

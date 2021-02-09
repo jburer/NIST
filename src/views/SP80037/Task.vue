@@ -61,6 +61,7 @@
             <li
               v-for="responsibility in task.PrimaryResponsibility.Roles.Role"
               :key="responsibility"
+              :BusinessRole="task.PrimaryResponsibility.Roles.Role"
             >
               <router-link
                 class="step-link"
@@ -108,6 +109,7 @@
             <li
               v-for="reference in task.References.Publications.Publication"
               :key="reference"
+              :Publication="task.References.Publications.Publication"
             >
               <router-link
                 class="step-link"
