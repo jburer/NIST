@@ -1,5 +1,7 @@
 <template>
   <div>
+    {{ minimumrequirement.Publications.Publication }}
+    {{ minimumrequirement.ControlFamily }}
     <table>
       <tr>
         <td align="left">
@@ -29,6 +31,16 @@
 export default {
   props: {
     minimumrequirement: Object
+  },
+  created() {
+    console.log("\nMinimumRequirement.created():  start");
+
+    this.$store.dispatch("breadcrumb/setBreadcrumbs", [
+      { document: "FIPS 200", name: "FIPS200" },
+      { document: this.minimumrequirement.ControlFamily }
+    ]);
+
+    this.$store.dispatch("minimumrequirement/getMinimumRequirements");
   }
 };
 </script>

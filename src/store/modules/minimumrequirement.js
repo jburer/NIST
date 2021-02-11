@@ -11,11 +11,6 @@ export const mutations = {
   SET_MINIMUMREQUIREMENT(state, minimumrequirement) {
     state.minimumrequirement = minimumrequirement;
   },
-  /*
-  SET_MINIMUMREQUIREMENTS_TOTAL(state, minimumrequirementsTotal) {
-    state.minimumrequirementsTotal = minimumrequirementsTotal;
-  },
-  */
   SET_MINIMUMREQUIREMENTS(state, minimumrequirements) {
     state.minimumrequirements = minimumrequirements;
   }
@@ -23,33 +18,27 @@ export const mutations = {
 
 export const actions = {
   getMinimumRequirements({ commit }) {
-    console.log("\n... minimumrequirement.getMinimumRequirements():  start");
+    console.log("\nminimumrequirement.getMinimumRequirements():  start");
     Service.getMinimumRequirements()
       .then(response => {
         console.log(response);
         commit("SET_MINIMUMREQUIREMENTS", response.data);
-        /*
-        commit(
-          "SET_MINIMUMREQUIREMENTS_TOTAL",
-          parseInt(response.headers["x-total-count"])
-        );
-        */
       })
       .catch(error => {
         console.log("There was an error:" + error.response);
       });
   },
   getMinimumRequirement({ commit, getters }, MinimumRequirement) {
-    console.log("\n... minimumrequirement.getMinimumRequirement():  start");
+    console.log("\nminimumrequirement.getMinimumRequirement():  start");
     console.log(
-      "minimumrequirement.getMinimumRequirement.MinimumRequirement = " +
+      " ... minimumrequirement.getMinimumRequirement.MinimumRequirement = " +
         MinimumRequirement
     );
     var minimumrequirement = getters.getMinimumRequirementByMinimumRequirement(
       MinimumRequirement
     );
     console.log(
-      "minimumrequirement.getMinimumRequirement.minimumrequirement = " +
+      " ... minimumrequirement.getMinimumRequirement.minimumrequirement = " +
         minimumrequirement
     );
 
@@ -71,10 +60,10 @@ export const actions = {
 export const getters = {
   getMinimumRequirementByMinimumRequirement: state => MinimumRequirement => {
     console.log(
-      "\n... minimumrequirement.getMinimumRequirementByMinimumRequirement:  start"
+      "\nminimumrequirement.getMinimumRequirementByMinimumRequirement:  start"
     );
     console.log(
-      "minimumrequirement.getMinimumRequirementByMinimumRequirement.MinimumRequirement = " +
+      " ... minimumrequirement.getMinimumRequirementByMinimumRequirement.MinimumRequirement = " +
         MinimumRequirement
     );
     return state.minimumrequirements.find(

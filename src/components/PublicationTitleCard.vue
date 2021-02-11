@@ -14,9 +14,24 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  props: {
-    publication: Object
+  props: ["Publication"],
+  created() {
+    console.log("\nPublicationTitleCard.created():  start");
+    console.log(
+      " ... PublicationTitleCard.created().Publication = " + this.Publication
+    );
+
+    this.$store
+      .dispatch("publication/getPublications")
+      .then(
+        this.$store.dispatch("publication/getPublication", this.Publication)
+      );
+  },
+  computed: {
+    ...mapState(["publication"])
   }
 };
 </script>

@@ -1,7 +1,9 @@
 <template>
   <div>
-    <p>
-      <router-link :to="{ name: 'SP80037' }">SP 800-37</router-link>
+    <p v-if="documents.live">
+      <router-link :to="{ name: documents.name }">{{
+        documents.document
+      }}</router-link>
     </p>
     <p>
       <router-link :to="{ name: 'FIPS200' }">FIPS 200</router-link>
@@ -10,17 +12,27 @@
 </template>
 
 <script>
-//import { mapState } from "vuex";
-
 export default {
+  data() {
+    return {
+      documents: [
+        {
+          name: "SP80037",
+          document: "SP 800-37",
+          live: false
+        },
+        {
+          name: "FIPS200",
+          document: "FIPS 200",
+          live: true
+        }
+      ]
+    };
+  },
   created() {
-    console.log("\n... Home.created():  start");
-
-    this.$store.dispatch("publication/getPublications");
-    console.log("Home.created().Publications = " + this.Publications);
-
+    console.log("\nHome.created():  start");
     this.$store.dispatch("businessrole/getBusinessRoles");
-    console.log("Home.created().BusinessRoles = " + this.BusinessRoles);
+    this.$store.dispatch("breadcrumb/setBreadcrumbs", []);
   }
 };
 </script>

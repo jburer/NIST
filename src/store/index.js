@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import * as breadcrumb from "@/store/modules/breadcrumb.js";
 import * as step from "@/store/modules/step.js";
 import * as minimumrequirement from "@/store/modules/minimumrequirement.js";
 import * as publication from "@/store/modules/publication.js";
@@ -9,11 +10,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
+    breadcrumb,
     step,
     minimumrequirement,
     publication,
     businessrole
   },
+  breadcrumb,
   state: {},
   minimumrequirement: {},
   publication: {},

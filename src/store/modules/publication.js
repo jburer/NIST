@@ -9,49 +9,41 @@ export const state = {
 
 export const mutations = {
   SET_PUBLICATION(state, publication) {
+    console.log("\npublication.SET_PUBLICATION()  start");
     state.publication = publication;
   },
-  /*
-  SET_PUBLICATIONS_TOTAL(state, publicationsTotal) {
-    state.publicationsTotal = publicationsTotal;
-  },
-  */
   SET_PUBLICATIONS(state, publications) {
+    console.log("\npublication.SET_PUBLICATIONS()  start");
     state.publications = publications;
   }
 };
 
 export const actions = {
   getPublications({ commit }) {
-    console.log("\n... publication.getPublications():  start");
+    console.log("\npublication.getPublications():  start");
     Service.getPublications()
       .then(response => {
         console.log(response);
         commit("SET_PUBLICATIONS", response.data);
-        /*
-        commit(
-          "SET_PUBLICATIONS_TOTAL",
-          parseInt(response.headers["x-total-count"])
-        );
-        */
       })
       .catch(error => {
         console.log("There was an error:" + error.response);
       });
   },
   getPublication({ commit, getters }, Publication) {
-    console.log("\n... publication.getPublication():  start");
-    console.log("publication.getPublication.Publication = " + Publication);
+    console.log("\npublication.getPublication():  start");
+    console.log(" ... publication.getPublication.Publication = " + Publication);
     var publication = getters.getPublicationByPublication(Publication);
-    console.log("publication.getPublication.publication = " + publication);
+    console.log(" ... publication.getPublication.publication = " + publication);
 
     if (publication) {
       commit("SET_PUBLICATION", publication);
     } else {
-      Service.getPublication(publication)
+      Service.getPublication(Publication)
         .then(response => {
           console.log(response);
-          commit("SET_PUBLICATION", response.data);
+          console.log(response.data[0]);
+          commit("SET_PUBLICATION", response.data[0]);
         })
         .catch(error => {
           console.log("There was an error:" + error.response);
@@ -62,9 +54,10 @@ export const actions = {
 
 export const getters = {
   getPublicationByPublication: state => Publication => {
-    console.log("\n... publication.getPublicationByPublication:  start");
+    console.log("\npublication.getPublicationByPublication:  start");
     console.log(
-      "publication.getPublicationByPublication.Publication = " + Publication
+      " ... publication.getPublicationByPublication.Publication = " +
+        Publication
     );
     return state.publications.find(
       publication => publication.Publication === Publication

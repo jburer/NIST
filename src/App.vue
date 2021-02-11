@@ -28,12 +28,30 @@ export default {
   padding: 30px;
 }
 
-#nav a {
+#nav a:link {
   font-weight: bold;
   color: #2c3e50;
 }
 
+#nav a:visited {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a:hover {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+#nav a:active {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: underline;
+}
+/*
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+*/
 </style>

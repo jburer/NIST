@@ -38,37 +38,38 @@ const FIPS200API = axios.create({
 
 export default {
   getSteps() {
-    console.log("\n... Service.getSteps:  start");
+    console.log("\nService.getSteps():  start");
     return SP80037R2API.get("/Steps");
   },
   getStep(id) {
-    console.log("\n... Service.getStep:  start");
+    console.log("\nService.getStep():  start");
     return SP80037R2API.get("/Steps/" + id);
   },
   getMinimumRequirements() {
-    console.log("\n... Service.getMinimumRequirements:  start");
+    console.log("\nService.getMinimumRequirements():  start");
     return FIPS200API.get("/MinimumRequirements");
   },
   getMinimumRequirement(ControlFamilyID) {
-    console.log("\n... Service.getMinimumRequirement:  start");
+    console.log("\nService.getMinimumRequirement():  start");
     return FIPS200API.get(
       "/MinimumRequirements?ControlFamilyID=" + ControlFamilyID
     );
   },
   getPublications() {
-    console.log("\n... Service.getPublications():  start");
+    console.log("\nService.getPublications():  start");
     return publicationsAPI.get("/Publications");
   },
   getPublication(publication) {
-    console.log("\n... Service.getPublication:  start");
+    console.log("\nService.getPublication():  start");
+    console.log(" ... Service.getPublication().publication = " + publication);
     return publicationsAPI.get("/Publications?Publication=" + publication);
   },
   getBusinessRoles() {
-    console.log("\n... Service.getBusinessRoles:  start");
+    console.log("\nService.getBusinessRoles():  start");
     return businessroleAPI.get("/Roles");
   },
   getBusinessRole(businessrole) {
-    console.log("\n... Service.getBusinessRole:  start");
+    console.log("\nService.getBusinessRole():  start");
     return businessroleAPI.get("/Roles?Role=" + businessrole);
   }
 };
