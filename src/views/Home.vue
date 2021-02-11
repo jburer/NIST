@@ -1,12 +1,9 @@
 <template>
   <div>
-    <p v-if="documents.live">
-      <router-link :to="{ name: documents.name }">{{
-        documents.document
+    <p v-for="document in documents" :key="document.link">
+      <router-link v-if="document.live" :to="{ name: document.link }">{{
+        document.title
       }}</router-link>
-    </p>
-    <p>
-      <router-link :to="{ name: 'FIPS200' }">FIPS 200</router-link>
     </p>
   </div>
 </template>
@@ -17,13 +14,13 @@ export default {
     return {
       documents: [
         {
-          name: "SP80037",
-          document: "SP 800-37",
+          link: "SP80037",
+          title: "SP 800-37",
           live: false
         },
         {
-          name: "FIPS200",
-          document: "FIPS 200",
+          link: "FIPS200",
+          title: "FIPS 200",
           live: true
         }
       ]

@@ -34,8 +34,8 @@ export default {
 
 <style scoped>
 .step-card {
-  padding: 20px;
-  margin-bottom: 24px;
+  padding: 0 15px;
+  /*margin-bottom: 24px;*/
   transition: all 0.2s linear;
   cursor: pointer;
 }

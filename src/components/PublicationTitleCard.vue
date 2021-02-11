@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <h3 align="left">
-      {{ publication.publication.Title }}<br />
-      <span v-if="publication.publication.SubTitle">{{
-        publication.publication.SubTitle
-      }}</span>
+  <div class="publication">
+    <div class="title">
+      {{ publication.publication.Title }}
+    </div>
+    <div v-if="publication.publication.SubTitle" class="subtitle">
+      {{ publication.publication.SubTitle }}
+    </div>
+    <div class="link">
       <a :href="publication.publication.Link">{{
         publication.publication.Publication
       }}</a>
-    </h3>
-    <h3 align="left"></h3>
+    </div>
   </div>
 </template>
 
@@ -36,4 +37,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.publication {
+  padding: 15px;
+  text-align: left;
+}
+.title {
+  font-weight: bold;
+  font-size: large;
+}
+.subtitle {
+  font-weight: normal;
+  font-size: large;
+}
+.link {
+  font-weight: normal;
+  font-size: large;
+}
+</style>

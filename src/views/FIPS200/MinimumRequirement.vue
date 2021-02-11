@@ -1,7 +1,6 @@
 <template>
   <div>
-    {{ minimumrequirement.Publications.Publication }}
-    {{ minimumrequirement.ControlFamily }}
+    <span class="title">{{ minimumrequirement.ControlFamily }}</span>
     <table>
       <tr>
         <td align="left">
@@ -17,6 +16,7 @@
             <li
               v-for="requirement in minimumrequirement.MinimumRequirement"
               :key="requirement"
+              class="li"
             >
               {{ requirement }}
             </li>
@@ -45,4 +45,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.title {
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+.li {
+  padding: 5px;
+}
+</style>

@@ -15,21 +15,17 @@ import PublicationTitleCard from "@/components/PublicationTitleCard.vue";
 import MinimumRequirementCard from "@/components/MinimumRequirementCard.vue";
 
 export default {
-  props: {
-    Publication: Object
-    //Breadcrumb: String
-  },
   components: {
     PublicationTitleCard,
     MinimumRequirementCard
   },
   created() {
     console.log("\nFIPS200.created():  start");
+
     this.Publication = "FIPS 200";
     console.log(
       " ... FIPS200.created().this.Publication = " + this.Publication
     );
-    //console.log(" ... FIPS200.created().this.Breadcrumb = " + this.Breadcrumb);
 
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
       { document: "FIPS 200", name: "FIPS200" }

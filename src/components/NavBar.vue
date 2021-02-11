@@ -4,7 +4,7 @@
       <router-link to="/" class="nav-item">NIST</router-link>
     </span>
     <span v-if="breadcrumb.breadcrumbs.length > 0">
-      <span v-for="breadcrumb in breadcrumb.breadcrumbs" :key="breadcrumb">
+      <span v-for="breadcrumb in breadcrumb.breadcrumbs" :key="breadcrumb.name">
         <span class="separator">
           |
         </span>
@@ -36,7 +36,7 @@ export default {
   display: flex;
   justify-content: left;
   align-items: center;
-  height: 60px;
+  height: 40px;
 }
 .nav .separator {
   box-sizing: border-box;
