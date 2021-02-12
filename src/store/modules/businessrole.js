@@ -18,10 +18,10 @@ export const mutations = {
 
 export const actions = {
   getBusinessRoles({ commit }) {
-    console.log("\nbusinessrole.getBusinessRoles():  start");
+    //console.log("\nbusinessrole.getBusinessRoles():  start");
     Service.getBusinessRoles()
       .then(response => {
-        console.log(response);
+        //console.log(response);
         commit("SET_BUSSINESSROLES", response.data);
       })
       .catch(error => {
@@ -29,21 +29,21 @@ export const actions = {
       });
   },
   getBusinessRole({ commit, getters }, BusinessRole) {
-    console.log("\nbusinessrole.getBusinessRole():  start");
-    console.log(
-      " ... businessrole.getBusinessRole.BusinessRole = " + BusinessRole
-    );
+    //console.log("\nbusinessrole.getBusinessRole():  start");
+    //console.log(
+    //" ... businessrole.getBusinessRole.BusinessRole = " + BusinessRole
+    //);
     var businessrole = getters.getBusinessRoleByRole(BusinessRole);
-    console.log(
-      " ... businessroles.getBusinessRole.businessrole = " + businessrole
-    );
+    //console.log(
+    //" ... businessroles.getBusinessRole.businessrole = " + businessrole
+    //);
 
     if (businessrole) {
       commit("SET_BUSSINESSROLE", businessrole);
     } else {
       Service.getBusinessRole(businessrole)
         .then(response => {
-          console.log(response);
+          //console.log(response);
           commit("SET_BUSSINESSROLE", response.data);
         })
         .catch(error => {
@@ -55,10 +55,10 @@ export const actions = {
 
 export const getters = {
   getBusinessRoleByRole: state => BusinessRole => {
-    console.log("\nbusinessrole.getBusinessRoleByRole():  start");
-    console.log(
-      " ... businessrole.getBusinessRoleByRole.BusinessRole = " + BusinessRole
-    );
+    //console.log("\nbusinessrole.getBusinessRoleByRole():  start");
+    //console.log(
+    //  " ... businessrole.getBusinessRoleByRole.BusinessRole = " + BusinessRole
+    //);
     return state.businessroles.find(
       businessrole => businessrole.Role === BusinessRole
     );

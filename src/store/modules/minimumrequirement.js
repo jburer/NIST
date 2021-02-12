@@ -28,14 +28,14 @@ export const actions = {
         console.log("There was an error:" + error.response);
       });
   },
-  getMinimumRequirement({ commit, getters }, MinimumRequirement) {
+  getMinimumRequirement({ commit, getters }, ControlFamilyID) {
     console.log("\nminimumrequirement.getMinimumRequirement():  start");
     console.log(
       " ... minimumrequirement.getMinimumRequirement.MinimumRequirement = " +
-        MinimumRequirement
+        ControlFamilyID
     );
-    var minimumrequirement = getters.getMinimumRequirementByMinimumRequirement(
-      MinimumRequirement
+    var minimumrequirement = getters.getMinimumRequirementByControlFamilyID(
+      ControlFamilyID
     );
     console.log(
       " ... minimumrequirement.getMinimumRequirement.minimumrequirement = " +
@@ -45,10 +45,11 @@ export const actions = {
     if (minimumrequirement) {
       commit("SET_MINIMUMREQUIREMENT", minimumrequirement);
     } else {
-      Service.getMinimumRequirement(minimumrequirement)
+      Service.getMinimumRequirement(ControlFamilyID)
         .then(response => {
           console.log(response);
-          commit("SET_MINIMUMREQUIREMENT", response.data);
+          console.log(response.data[0]);
+          commit("SET_MINIMUMREQUIREMENT", response.data[0]);
         })
         .catch(error => {
           console.log("There was an error:" + error.response);
@@ -58,17 +59,17 @@ export const actions = {
 };
 
 export const getters = {
-  getMinimumRequirementByMinimumRequirement: state => MinimumRequirement => {
+  getMinimumRequirementByControlFamilyID: state => ControlFamilyID => {
     console.log(
-      "\nminimumrequirement.getMinimumRequirementByMinimumRequirement:  start"
+      "\nminimumrequirement.getMinimumRequirementByControlFamilyID:  start"
     );
     console.log(
-      " ... minimumrequirement.getMinimumRequirementByMinimumRequirement.MinimumRequirement = " +
-        MinimumRequirement
+      " ... minimumrequirement.getMinimumRequirementByControlFamilyID.ControlFamilyID = " +
+        ControlFamilyID
     );
     return state.minimumrequirements.find(
       minimumrequirement =>
-        minimumrequirement.MinimumRequirement === MinimumRequirement
+        minimumrequirement.ControlFamilyID === ControlFamilyID
     );
   }
 };

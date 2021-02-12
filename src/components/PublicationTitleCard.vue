@@ -7,7 +7,7 @@
       {{ publication.publication.SubTitle }}
     </div>
     <div class="link">
-      <a :href="publication.publication.Link">{{
+      <a :href="publication.publication.Link" target="_blank">{{
         publication.publication.Publication
       }}</a>
     </div>
@@ -25,11 +25,7 @@ export default {
       " ... PublicationTitleCard.created().Publication = " + this.Publication
     );
 
-    this.$store
-      .dispatch("publication/getPublications")
-      .then(
-        this.$store.dispatch("publication/getPublication", this.Publication)
-      );
+    this.$store.dispatch("publication/getPublication", this.Publication);
   },
   computed: {
     ...mapState(["publication"])

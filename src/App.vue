@@ -11,6 +11,11 @@ import NavBar from "@/components/NavBar.vue";
 export default {
   components: {
     NavBar
+  },
+  created() {
+    console.log("\nApp.created():  start");
+    this.$store.dispatch("businessrole/getBusinessRoles");
+    this.$store.dispatch("publication/getPublications");
   }
 };
 </script>

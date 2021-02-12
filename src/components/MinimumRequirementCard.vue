@@ -3,7 +3,7 @@
     class="step-link"
     :to="{
       name: 'minimumrequirement',
-      params: { minimumrequirement: minimumrequirement }
+      params: { MinimumRequirement: MinimumRequirement }
     }"
   >
     <div class="step-card -shadow">
@@ -11,8 +11,8 @@
         <tr>
           <td align="left">
             <span class="eyebrow"
-              >{{ minimumrequirement.ControlFamily }} ({{
-                minimumrequirement.ControlFamilyID
+              >{{ MinimumRequirement.ControlFamily }} ({{
+                MinimumRequirement.ControlFamilyID
               }})</span
             >
           </td>
@@ -26,9 +26,7 @@
 
 <script>
 export default {
-  props: {
-    minimumrequirement: Object
-  }
+  props: ["MinimumRequirement"]
 };
 </script>
 

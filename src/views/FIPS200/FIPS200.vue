@@ -1,10 +1,10 @@
 <template>
   <div>
-    <PublicationTitleCard :publication="Publication" />
+    <PublicationTitleCard :Publication="this.Publication" />
     <MinimumRequirementCard
       v-for="minimumrequirement in minimumrequirement.minimumrequirements"
       :key="minimumrequirement.ControlFamilyID"
-      :minimumrequirement="minimumrequirement"
+      :MinimumRequirement="minimumrequirement"
     />
   </div>
 </template>

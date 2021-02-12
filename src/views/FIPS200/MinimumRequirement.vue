@@ -1,10 +1,17 @@
 <template>
   <div>
-    <span class="title">{{ minimumrequirement.ControlFamily }}</span>
+    <span class="title">{{
+      minimumrequirement.minimumrequirement.ControlFamily
+    }}</span>
     <table>
       <tr>
         <td align="left">
-          <span v-if="minimumrequirement.MinimumRequirement.length > 1">
+          <span
+            v-if="
+              minimumrequirement.minimumrequirement.MinimumRequirement.length >
+                1
+            "
+          >
             Minimum Requirements:
           </span>
           <span v-else>Minimum Requirement:</span>
@@ -14,7 +21,8 @@
         <td align="left">
           <ul>
             <li
-              v-for="requirement in minimumrequirement.MinimumRequirement"
+              v-for="requirement in minimumrequirement.minimumrequirement
+                .MinimumRequirement"
               :key="requirement"
               class="li"
             >
@@ -28,19 +36,30 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  props: {
-    minimumrequirement: Object
-  },
+  props: ["MinimumRequirement"],
   created() {
     console.log("\nMinimumRequirement.created():  start");
 
+    if (this.MinimumRequirement === undefined) {
+      console.log(this.$store.state.minimumrequirement.minimumrequirement);
+      this.MinimumRequirement = this.$store.state.minimumrequirement.minimumrequirement;
+    } else {
+      this.$store.dispatch(
+        "minimumrequirement/getMinimumRequirement",
+        this.MinimumRequirement.ControlFamilyID
+      );
+    }
+
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
       { document: "FIPS 200", name: "FIPS200" },
-      { document: this.minimumrequirement.ControlFamily }
+      { document: this.MinimumRequirement.ControlFamily }
     ]);
-
-    this.$store.dispatch("minimumrequirement/getMinimumRequirements");
+  },
+  computed: {
+    ...mapState(["minimumrequirement"])
   }
 };
 </script>

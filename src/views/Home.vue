@@ -28,7 +28,6 @@ export default {
   },
   created() {
     console.log("\nHome.created():  start");
-    this.$store.dispatch("businessrole/getBusinessRoles");
     this.$store.dispatch("breadcrumb/setBreadcrumbs", []);
   }
 };

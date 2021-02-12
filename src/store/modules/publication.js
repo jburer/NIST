@@ -14,6 +14,9 @@ export const mutations = {
   },
   SET_PUBLICATIONS(state, publications) {
     console.log("\npublication.SET_PUBLICATIONS()  start");
+    console.log(
+      " ... publication.SET_PUBLICATIONS().publications = " + publications
+    );
     state.publications = publications;
   }
 };
@@ -23,7 +26,7 @@ export const actions = {
     console.log("\npublication.getPublications():  start");
     Service.getPublications()
       .then(response => {
-        console.log(response);
+        console.log(response.data);
         commit("SET_PUBLICATIONS", response.data);
       })
       .catch(error => {
@@ -33,6 +36,7 @@ export const actions = {
   getPublication({ commit, getters }, Publication) {
     console.log("\npublication.getPublication():  start");
     console.log(" ... publication.getPublication.Publication = " + Publication);
+    console.log(state.publication);
     var publication = getters.getPublicationByPublication(Publication);
     console.log(" ... publication.getPublication.publication = " + publication);
 
