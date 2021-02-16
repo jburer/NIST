@@ -39,27 +39,32 @@
 import { mapState } from "vuex";
 
 export default {
-  props: ["MinimumRequirement"],
+  props: ["ControlFamilyID"],
   created() {
     console.log("\nMinimumRequirement.created():  start");
-
-    if (this.MinimumRequirement === undefined) {
-      console.log(this.$store.state.minimumrequirement.minimumrequirement);
-      this.MinimumRequirement = this.$store.state.minimumrequirement.minimumrequirement;
-    } else {
-      this.$store.dispatch(
-        "minimumrequirement/getMinimumRequirement",
-        this.MinimumRequirement.ControlFamilyID
-      );
-    }
+    console.log(
+      " ... MinimumRequirement.created():  ControlFamilyID = " + this.temp
+    );
+    this.$store.dispatch("minimumrequirement/getMinimumRequirement", this.temp);
 
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
-      { document: "FIPS 200", name: "FIPS200" },
-      { document: this.MinimumRequirement.ControlFamily }
+      {
+        document: this.$store.state.publication.publication.Publication,
+        name: this.$store.state.publication.publication.id
+      },
+      { document: this.minimumrequirement.minimumrequirement.ControlFamily }
     ]);
   },
   computed: {
-    ...mapState(["minimumrequirement"])
+    temp() {
+      if (this.ControlFamilyID === undefined) {
+        return this.$store.state.minimumrequirement.minimumrequirement
+          .ControlFamilyID;
+      } else {
+        return this.ControlFamilyID;
+      }
+    },
+    ...mapState(["minimumrequirement", "breadcrumb"])
   }
 };
 </script>

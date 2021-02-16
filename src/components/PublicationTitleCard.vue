@@ -18,14 +18,17 @@
 import { mapState } from "vuex";
 
 export default {
-  props: ["Publication"],
   created() {
     console.log("\nPublicationTitleCard.created():  start");
     console.log(
-      " ... PublicationTitleCard.created().Publication = " + this.Publication
+      " ... PublicationTitleCard.created().Publication = " +
+        this.publication.publication.Publication
     );
 
-    this.$store.dispatch("publication/getPublication", this.Publication);
+    this.$store.dispatch(
+      "publication/getPublication",
+      this.publication.publication.Publication
+    );
   },
   computed: {
     ...mapState(["publication"])

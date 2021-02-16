@@ -3,7 +3,7 @@
     class="step-link"
     :to="{
       name: 'minimumrequirement',
-      params: { MinimumRequirement: MinimumRequirement }
+      params: { ControlFamilyID: MinimumRequirement.ControlFamilyID }
     }"
   >
     <div class="step-card -shadow">

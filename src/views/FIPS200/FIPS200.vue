@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PublicationTitleCard :Publication="this.Publication" />
+    <PublicationTitleCard />
     <MinimumRequirementCard
       v-for="minimumrequirement in minimumrequirement.minimumrequirements"
       :key="minimumrequirement.ControlFamilyID"
@@ -22,19 +22,21 @@ export default {
   created() {
     console.log("\nFIPS200.created():  start");
 
-    this.Publication = "FIPS 200";
-    console.log(
-      " ... FIPS200.created().this.Publication = " + this.Publication
-    );
-
+    this.$store.dispatch("publication/getPublication", this.Publication);
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
-      { document: "FIPS 200", name: "FIPS200" }
+      {
+        document: this.publication.publication.Publication,
+        name: this.publication.publication.id
+      }
     ]);
-
     this.$store.dispatch("minimumrequirement/getMinimumRequirements");
   },
   computed: {
-    ...mapState(["minimumrequirement", "breadcrumb"])
+    Publication() {
+      var Publication = "FIPS 200";
+      return Publication;
+    },
+    ...mapState(["publication", "breadcrumb", "minimumrequirement"])
   }
 };
 </script>

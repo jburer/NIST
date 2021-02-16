@@ -11,6 +11,10 @@ export const mutations = {
   SET_PUBLICATION(state, publication) {
     console.log("\npublication.SET_PUBLICATION()  start");
     state.publication = publication;
+    console.log(
+      " ... publication.SET_PUBLICATION():  state.publication = " +
+        state.publication
+    );
   },
   SET_PUBLICATIONS(state, publications) {
     console.log("\npublication.SET_PUBLICATIONS()  start");
@@ -36,11 +40,12 @@ export const actions = {
   getPublication({ commit, getters }, Publication) {
     console.log("\npublication.getPublication():  start");
     console.log(" ... publication.getPublication.Publication = " + Publication);
-    console.log(state.publication);
     var publication = getters.getPublicationByPublication(Publication);
-    console.log(" ... publication.getPublication.publication = " + publication);
 
     if (publication) {
+      console.log(
+        " ... publication.getPublication():  publication = " + publication
+      );
       commit("SET_PUBLICATION", publication);
     } else {
       Service.getPublication(Publication)

@@ -22,9 +22,10 @@ export default new Vuex.Store({
     publication,
     businessrole
   },
-  breadcrumb: {},
-  state: {},
+  state: {}
+  /*,
   minimumrequirement: {},
   publication: {},
   businessrole: {}
+  */
 });
