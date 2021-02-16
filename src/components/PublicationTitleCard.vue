@@ -25,10 +25,10 @@ export default {
   created() {
     console.log("\nPublicationTitleCard.created():  start");
 
-    this.$store.dispatch(
-      "publication/getPublication",
-      this.publication.publication.Publication
-    );
+    this.$store.dispatch("publication/getPublication", {
+      Publication: this.publication.publication.Publication,
+      PublicationID: this.publication.PublicationID
+    });
   },
   computed: {
     ...mapState(["publication"])

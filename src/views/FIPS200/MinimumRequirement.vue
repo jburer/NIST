@@ -39,7 +39,7 @@
 import { mapState } from "vuex";
 
 export default {
-  props: ["ControlFamilyID"],
+  props: ["ControlFamilyID", "PublicationID"],
   created() {
     console.log("\nMinimumRequirement.created():  start");
     console.log(
@@ -50,11 +50,10 @@ export default {
       "minimumrequirement/getMinimumRequirement",
       this.tempControlFamilyID
     );
-
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
       {
-        document: this.$store.state.publication.publication.Publication,
-        name: this.$store.state.publication.publication.id
+        document: this.publication.publication.Publication,
+        name: this.publication.PublicationID
       },
       { document: this.minimumrequirement.minimumrequirement.ControlFamily }
     ]);
@@ -68,7 +67,7 @@ export default {
         return this.ControlFamilyID;
       }
     },
-    ...mapState(["minimumrequirement", "breadcrumb"])
+    ...mapState(["minimumrequirement", "breadcrumb", "publication"])
   }
 };
 </script>
