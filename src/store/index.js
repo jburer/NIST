@@ -23,9 +23,4 @@ export default new Vuex.Store({
     businessrole
   },
   state: {}
-  /*,
-  minimumrequirement: {},
-  publication: {},
-  businessrole: {}
-  */
 });

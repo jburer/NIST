@@ -1,22 +1,27 @@
 <template>
-  <div class="step-header">
+  <div class="publication">
     <table>
       <tr>
         <td align="left">Publication:</td>
-        <td align="left">{{ publication.Publication }}</td>
-      </tr>
-      <tr>
-        <td align="left">Publication:</td>
-        <td align="left">{{ publication.Title }} {{ publication.SubTitle }}</td>
-      </tr>
-      <tr>
-        <td align="left"><nobr>Release Date:</nobr></td>
-        <td align="left">{{ publication.ReleaseDate }}</td>
+        <td align="left">{{ publication.publication.Publication }}</td>
       </tr>
       <tr>
         <td align="left">Publication:</td>
         <td align="left">
-          <a :href="publication.Link">{{ publication.Link }}</a>
+          {{ publication.publication.Title }}
+          {{ publication.publication.SubTitle }}
+        </td>
+      </tr>
+      <tr>
+        <td align="left"><nobr>Release Date:</nobr></td>
+        <td align="left">{{ publication.publication.ReleaseDate }}</td>
+      </tr>
+      <tr>
+        <td align="left">Publication:</td>
+        <td align="left">
+          <a :href="publication.publication.Link" target="_blank">{{
+            publication.publication.Link
+          }}</a>
         </td>
       </tr>
     </table>
@@ -27,29 +32,12 @@
 import { mapState, mapActions } from "vuex";
 
 export default {
-  props: ["Publication"],
   created() {
     console.log("\n... Publication.create():  start");
-    console.log(
-      "Publication.create().this.Publication type = " + typeof this.Publication
-    );
-
-    //this.$store.dispatch("publication/getPublications");
-    this.getPublication(this.Publication);
-
-    console.log("Publication.create().this.Publication = " + this.Publication);
-    console.log(
-      "Publication.create().this.Publication type = " + typeof this.Publication
-    );
-
-    console.log("Publication.create().this.publication = " + this.publication);
-    console.log(
-      "Publication.create().this.publication type = " + typeof this.publication
-    );
   },
-  computed: mapState({
-    publication: state => state.publication.publication
-  }),
+  computed: {
+    ...mapState(["publication"])
+  },
   methods: {
     ...mapActions("publication", ["getPublication"])
   }
@@ -57,22 +45,8 @@ export default {
 </script>
 
 <style scoped>
-.location {
-  margin-bottom: 0;
-}
-.location > .icon {
-  margin-left: 10px;
-}
-.step-header > .title {
-  margin: 0;
-}
-.list-group {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.list-group > .list-item {
-  padding: 1em 0;
-  border-bottom: solid 1px #e5e5e5;
+.publication {
+  padding: 15px;
+  text-align: left;
 }
 </style>

@@ -7,9 +7,13 @@
       {{ publication.publication.SubTitle }}
     </div>
     <div class="link">
-      <a :href="publication.publication.Link" target="_blank">{{
-        publication.publication.Publication
-      }}</a>
+      <router-link
+        class="step-link"
+        :to="{
+          name: 'publication'
+        }"
+        >{{ publication.publication.Publication }}
+      </router-link>
     </div>
   </div>
 </template>
@@ -20,10 +24,6 @@ import { mapState } from "vuex";
 export default {
   created() {
     console.log("\nPublicationTitleCard.created():  start");
-    console.log(
-      " ... PublicationTitleCard.created().Publication = " +
-        this.publication.publication.Publication
-    );
 
     this.$store.dispatch(
       "publication/getPublication",

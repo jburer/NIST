@@ -9,16 +9,25 @@ export const state = {
 
 export const mutations = {
   SET_BUSSINESSROLE(state, businessrole) {
+    console.log("\nbusinessrole.SET_BUSSINESSROLE()  start");
+    console.log(
+      " ... businessrole.SET_BUSSINESSROLE():  businessrole = " + businessrole
+    );
     state.businessrole = businessrole;
   },
   SET_BUSSINESSROLES(state, businessroles) {
+    console.log("\nbusinessrole.SET_BUSSINESSROLES()  start");
+    console.log(
+      " ... businessrole.SET_BUSSINESSROLES():  businessroles = " +
+        businessroles
+    );
     state.businessroles = businessroles;
   }
 };
 
 export const actions = {
   getBusinessRoles({ commit }) {
-    //console.log("\nbusinessrole.getBusinessRoles():  start");
+    console.log("\nbusinessrole.getBusinessRoles():  start");
     Service.getBusinessRoles()
       .then(response => {
         //console.log(response);
@@ -29,14 +38,11 @@ export const actions = {
       });
   },
   getBusinessRole({ commit, getters }, BusinessRole) {
-    //console.log("\nbusinessrole.getBusinessRole():  start");
-    //console.log(
-    //" ... businessrole.getBusinessRole.BusinessRole = " + BusinessRole
-    //);
+    console.log("\nbusinessrole.getBusinessRole():  start");
+    console.log(
+      " ... businessrole.getBusinessRole.BusinessRole = " + BusinessRole
+    );
     var businessrole = getters.getBusinessRoleByRole(BusinessRole);
-    //console.log(
-    //" ... businessroles.getBusinessRole.businessrole = " + businessrole
-    //);
 
     if (businessrole) {
       commit("SET_BUSSINESSROLE", businessrole);
@@ -55,10 +61,10 @@ export const actions = {
 
 export const getters = {
   getBusinessRoleByRole: state => BusinessRole => {
-    //console.log("\nbusinessrole.getBusinessRoleByRole():  start");
-    //console.log(
-    //  " ... businessrole.getBusinessRoleByRole.BusinessRole = " + BusinessRole
-    //);
+    console.log("\nbusinessrole.getBusinessRoleByRole():  start");
+    console.log(
+      " ... businessrole.getBusinessRoleByRole.BusinessRole = " + BusinessRole
+    );
     return state.businessroles.find(
       businessrole => businessrole.Role === BusinessRole
     );

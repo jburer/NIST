@@ -43,9 +43,13 @@ export default {
   created() {
     console.log("\nMinimumRequirement.created():  start");
     console.log(
-      " ... MinimumRequirement.created():  ControlFamilyID = " + this.temp
+      " ... MinimumRequirement.created():  ControlFamilyID = " +
+        this.tempControlFamilyID
     );
-    this.$store.dispatch("minimumrequirement/getMinimumRequirement", this.temp);
+    this.$store.dispatch(
+      "minimumrequirement/getMinimumRequirement",
+      this.tempControlFamilyID
+    );
 
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
       {
@@ -56,7 +60,7 @@ export default {
     ]);
   },
   computed: {
-    temp() {
+    tempControlFamilyID() {
       if (this.ControlFamilyID === undefined) {
         return this.$store.state.minimumrequirement.minimumrequirement
           .ControlFamilyID;

@@ -14,14 +14,14 @@ export default {
     return {
       documents: [
         {
-          link: "SP80037",
-          title: "SP 800-37",
-          live: false
-        },
-        {
           link: "FIPS200",
           title: "FIPS 200",
           live: true
+        },
+        {
+          link: "SP80037R2",
+          title: "SP 800-37 Rev. 2",
+          live: false
         }
       ]
     };
