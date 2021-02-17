@@ -2,11 +2,10 @@
 
 NIST has a great set of documents that really does establish an incredible foundation
 for Security and Privacy. The problem is consuming that documentation and making it
-applicable to an enterprise level is a herculean task.
+applicable to an enterprise is a herculean task.
 
-To aid in that consumption, I've created an app <i>(that consumes an API)</i> to make the presentation
-of what I consider to be the fundemental data within that documentation a little more
-managable.
+To aid in that consumption, I've created an app <i>(that consumes a required API)</i> to make the presentation
+of data a little more managable.
 
 Current build only has FIPS 200. I will add more as I tackle them.
 
