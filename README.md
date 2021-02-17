@@ -36,26 +36,3 @@ This will make the app available on
 ```
 http://localhost:8080
 ```
-
-npm run serve
-
-```
-
-### Compiles and minifies for production
-
-```
-
-npm run build
-
-```
-
-### Vue setup
-
-```
-
-npm install
-npm run lint
-
-```
-
-```
