@@ -19,7 +19,7 @@ This is a simple Vue app that points to an API that makes the data available.
 
 It is designed to be run inside a Docker container, but can be run as a node app locally as well.
 
-The corresponding API and data are here.
+The corresponding API and data are here: <a href="https://github.com/jburer/nistapi" target="_blank">https://github.com/jburer/nistapi</a>.
 
 ## Docker setup
 
