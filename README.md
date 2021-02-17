@@ -4,14 +4,14 @@ NIST has a great set of documents that really does establish an incredible found
 for Security and Privacy. The problem is consuming that documentation and making it
 applicable to an enterprise is a herculean task.
 
-To aid in that consumption, I've created an app <i>(that consumes a required API)</i> to make the presentation
-of data a little more managable.
+To aid in that consumption, I've created an app <i>(that uses a required API)</i> to at least
+make the presentation of the data a little more managable.
 
-Current build only has FIPS 200. I will add more as I tackle them.
+Current build only has FIPS 200. I will add more data as I tackle the various docs.
 
 For more info on this effort check out my blog: <a href="http://jburer.wordpress.com" target="_blank">http://jburer.wordpress.com</a>
 
-## Fundementals
+## Architecture
 
 This is a simple Vue app that points to an API that makes the data available.
 
