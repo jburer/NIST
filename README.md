@@ -4,13 +4,13 @@ NIST has a great set of documents that really does establish an incredible found
 for Security and Privacy. The problem is consuming that documentation and making it
 applicable to an enterprise level is a herculean task.
 
-To aid in that consumption, I've created an app (that consumes an API) to make the presentation
+To aid in that consumption, I've created an app <i>(that consumes an API)</i> to make the presentation
 of what I consider to be the fundemental data within that documentation a little more
 managable.
 
 Current build only has FIPS 200. I will add more as I tackle them.
 
-For more info check out my blog: <a href="http://jburer.wordpress.com" target="_blank">http://jburer.wordpress.com</a>
+For more info on this effort check out my blog: <a href="http://jburer.wordpress.com" target="_blank">http://jburer.wordpress.com</a>
 
 ## Fundementals
 
