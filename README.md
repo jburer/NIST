@@ -16,6 +16,8 @@ For more info on this effort check out my blog: <a href="http://jburer.wordpress
 
 This is a simple Vue app that points to an API that makes the data available.
 
+<img src="./images/nistapp.gif" alt="nistapp">
+
 It is designed to be run inside a Docker container, but can be run as a node app locally as well.
 
 The corresponding API and data are here.
@@ -33,9 +35,6 @@ This will make the app available on
 
 ```
 http://localhost:8080
-
-### Compiles and hot-reloads for development
-
 ```
 
 npm run serve
