@@ -4,22 +4,27 @@ NIST has a great set of documents that really does establish an incredible found
 for Security and Privacy. The problem is consuming that documentation and making it
 applicable to an enterprise is a herculean task.
 
-To aid in that consumption, I've created an app <i>(that uses a required API)</i> to at least
-make the presentation of the data a little more managable.
-
-Current build only has FIPS 200. I will add more data as I tackle the various docs.
+This is my attempt to address a bit of that.
 
 For more info on this effort check out my blog: <a href="http://jburer.wordpress.com" target="_blank">http://jburer.wordpress.com</a>
 
+## The App
+
+This app simply segements the data for easier viewing, and allows you to dive into each entity independently.
+The goal is to make the presentation of the data a little more managable.
+
+The corresponding API and data are here: <a href="https://github.com/jburer/nistapi" target="_blank">https://github.com/jburer/nistapi</a>.  
+<i>NOTE: This app is hardcoded to look for the API on port 3000</i>
+
+Current build only has FIPS 200. I will add more data as I tackle the various docs.
+
 ## Architecture
 
-This is a simple Vue app that points to an API that makes the data available.
+This is pretty straightforward Vue app that points to the required API.
 
 <img src="./images/nistapp.gif" alt="nistapp">
 
-It is designed to be run inside a Docker container, but can be run as a node app locally as well.
-
-The corresponding API and data are here: <a href="https://github.com/jburer/nistapi" target="_blank">https://github.com/jburer/nistapi</a>.
+It is designed to be run inside a Docker container, but can be run as a node app as well.
 
 ## Docker setup
 
