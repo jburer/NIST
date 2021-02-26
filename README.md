@@ -26,9 +26,9 @@ This is pretty straightforward Vue app that points to the required API.
 
 It is designed to be run inside a Docker container, but can be run as a node app as well.
 
-## Docker setup
+## Docker Setup
 
-Clone the repository and move to the nistapp directory.
+Clone the repository and move to the <code>nistapp</code> directory.
 
 ```
 docker build -t <whatever>/nistapp .
