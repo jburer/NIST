@@ -8,6 +8,8 @@ import FIPS200 from "@/views/FIPS200/FIPS200.vue";
 import MinimumRequirement from "@/views/FIPS200/MinimumRequirement.vue";
 import Publication from "@/views/Publication/Publication.vue";
 import BusinessRole from "@/views/BusinessRole/BusinessRole.vue";
+import Glossary from "@/views/Glossary/Glossary.vue";
+import Term from "@/views/Glossary/Term.vue";
 
 Vue.use(VueRouter);
 
@@ -57,6 +59,18 @@ const routes = [
     path: "/businessrole",
     name: "businessrole",
     component: BusinessRole,
+    props: true
+  },
+  {
+    path: "/glossary",
+    name: "glossary",
+    component: Glossary,
+    props: true
+  },
+  {
+    path: "/glossary/term",
+    name: "term",
+    component: Term,
     props: true
   }
 ];

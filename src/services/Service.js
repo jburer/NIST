@@ -44,5 +44,9 @@ export default {
   getBusinessRole(businessrole) {
     console.log("\nService.getBusinessRole():  start");
     return nistAPI.get("/Roles?Role=" + businessrole);
+  },
+  getGlossary() {
+    console.log("\nService.getGlossary() ... start");
+    return nistAPI.get("/Glossary");
   }
 };
