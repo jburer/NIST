@@ -14,6 +14,11 @@ export default {
     return {
       documents: [
         {
+          link: "FIPS199",
+          title: "FIPS 199",
+          live: false
+        },
+        {
           link: "FIPS200",
           title: "FIPS 200",
           live: true
@@ -22,12 +27,17 @@ export default {
           link: "SP80037R2",
           title: "SP 800-37 Rev. 2",
           live: false
+        },
+        {
+          link: "glossary",
+          title: "Glossary",
+          live: true
         }
       ]
     };
   },
   created() {
-    console.log("\nHome.created():  start");
+    console.log("\nHome.created() ... start");
     this.$store.dispatch("breadcrumb/setBreadcrumbs", []);
   }
 };

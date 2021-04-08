@@ -1,12 +1,12 @@
 <template>
   <div>
-    <PublicationTitleCard :publication="Publication" />
+    <Title :publication="Publication" />
     <Card v-for="step in step.steps" :key="step.id" :step="step" />
   </div>
 </template>
 
 <script>
-import PublicationTitleCard from "@/components/PublicationTitleCard.vue";
+import Title from "@/components/Title.vue";
 import Card from "@/components/Card.vue";
 import { mapState } from "vuex";
 
@@ -15,7 +15,7 @@ export default {
     Publication: Object
   },
   components: {
-    PublicationTitleCard,
+    Title,
     Card
   },
   created() {
