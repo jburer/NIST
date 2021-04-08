@@ -1,5 +1,10 @@
 <template>
-  <div class="publication">
+  <div class="publication" v-if="title">
+    <div class="title">
+      {{ title }}
+    </div>
+  </div>
+  <div class="publication" v-else>
     <div class="title">
       {{ publication.publication.Title }}
     </div>
@@ -22,8 +27,11 @@
 import { mapState } from "vuex";
 
 export default {
+  props: ["title"],
   created() {
     console.log("\nPublicationTitleCard.created():  start");
+
+    console.log(this.title);
 
     this.$store.dispatch("publication/getPublication", {
       Publication: this.publication.publication.Publication,

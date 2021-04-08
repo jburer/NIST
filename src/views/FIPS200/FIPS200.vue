@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PublicationTitleCard />
+    <Title />
     <MinimumRequirementCard
       v-for="minimumrequirement in minimumrequirement.minimumrequirements"
       :key="minimumrequirement.ControlFamilyID"
@@ -12,23 +12,17 @@
 
 <script>
 import { mapState } from "vuex";
-import PublicationTitleCard from "@/components/PublicationTitleCard.vue";
+import Title from "@/components/Title.vue";
 import MinimumRequirementCard from "@/components/MinimumRequirementCard.vue";
 
 export default {
   components: {
-    PublicationTitleCard,
+    Title,
     MinimumRequirementCard
   },
   created() {
     console.log("\nFIPS200.created():  start");
 
-    console.log(
-      " ... FIPS200.created(): this.Publication = " + this.Publication
-    );
-    console.log(
-      " ... FIPS200.created(): this.PublicationID = " + this.PublicationID
-    );
     this.$store.dispatch("publication/getPublication", {
       Publication: this.Publication,
       PublicationID: this.PublicationID
