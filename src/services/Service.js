@@ -11,49 +11,36 @@ const nistAPI = axios.create({
 
 export default {
   getSteps() {
-    console.log("\nService.getSteps():  start");
     return nistAPI.get("/Steps");
   },
   getStep(id) {
-    console.log("\nService.getStep():  start");
     return nistAPI.get("/Steps/" + id);
   },
   getMinimumRequirements() {
-    console.log("\nService.getMinimumRequirements():  start");
-    return nistAPI.get("/MinimumRequirements");
+    return nistAPI.get("/FIPS200");
   },
   getMinimumRequirement(ControlFamilyID) {
-    console.log("\nService.getMinimumRequirement():  start");
-    return nistAPI.get(
-      "/MinimumRequirements?ControlFamilyID=" + ControlFamilyID
-    );
+    return nistAPI.get("/FIPS200?ControlFamilyID=" + ControlFamilyID);
   },
   getFIPS199() {
     return nistAPI.get("/FIPS199");
   },
   getPublications() {
-    console.log("\nService.getPublications():  start");
     return nistAPI.get("/Publications");
   },
   getPublication(publication) {
-    console.log("\nService.getPublication():  start");
-    console.log(" ... Service.getPublication().publication = " + publication);
     return nistAPI.get("/Publications?Publication=" + publication);
   },
   getBusinessRoles() {
-    console.log("\nService.getBusinessRoles():  start");
     return nistAPI.get("/Roles");
   },
   getBusinessRole(businessrole) {
-    console.log("\nService.getBusinessRole():  start");
     return nistAPI.get("/Roles?Role=" + businessrole);
   },
   getGlossary() {
-    console.log("\nService.getGlossary() ... start");
     return nistAPI.get("/Glossary");
   },
   getTerm(term) {
-    console.log(" ... Service.getTerm().term = " + term);
     return nistAPI.get("/Glossary?Term=" + term);
   }
 };

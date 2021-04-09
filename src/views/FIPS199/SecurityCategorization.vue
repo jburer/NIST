@@ -57,8 +57,7 @@ export default {
   computed: {
     tempAppliedTo() {
       if (this.AppliedTo === undefined) {
-        return this.$store.state.securitycategorization.securitycategorization
-          .AppliedTo;
+        return this.securitycategorization.securitycategorization.AppliedTo;
       } else {
         return this.AppliedTo;
       }

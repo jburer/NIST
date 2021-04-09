@@ -55,7 +55,7 @@ export default {
 
     //Data
     this.$store.dispatch("impact/getImpact", this.tempImpact).then(
-      //Breadcrumb
+      //Breadcrumbs
       this.$store.dispatch("breadcrumb/setBreadcrumbs", [
         {
           document: this.publication.publication.Publication,
@@ -70,7 +70,7 @@ export default {
   computed: {
     tempImpact() {
       if (this.Impact === undefined) {
-        return this.$store.state.impact.impact.Impact;
+        return this.impact.impact.Impact;
       } else {
         return this.Impact;
       }

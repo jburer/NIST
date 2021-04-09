@@ -41,28 +41,31 @@ import { mapState } from "vuex";
 export default {
   props: ["ControlFamilyID", "PublicationID"],
   created() {
-    console.log("\nMinimumRequirement.created():  start");
-    console.log(
-      " ... MinimumRequirement.created():  ControlFamilyID = " +
+    console.log("\nMinimumRequirement.created() ... start");
+
+    //Data
+    this.$store
+      .dispatch(
+        "minimumrequirement/getMinimumRequirement",
         this.tempControlFamilyID
-    );
-    this.$store.dispatch(
-      "minimumrequirement/getMinimumRequirement",
-      this.tempControlFamilyID
-    );
-    this.$store.dispatch("breadcrumb/setBreadcrumbs", [
-      {
-        document: this.publication.publication.Publication,
-        name: this.publication.PublicationID
-      },
-      { document: this.minimumrequirement.minimumrequirement.ControlFamily }
-    ]);
+      )
+      .then(
+        //Breadcrumb
+        this.$store.dispatch("breadcrumb/setBreadcrumbs", [
+          {
+            document: this.publication.publication.Publication,
+            name: this.publication.PublicationID
+          },
+          { document: this.minimumrequirement.minimumrequirement.ControlFamily }
+        ])
+      );
+
+    console.log("\nMinimumRequirement.created() ... end");
   },
   computed: {
     tempControlFamilyID() {
       if (this.ControlFamilyID === undefined) {
-        return this.$store.state.minimumrequirement.minimumrequirement
-          .ControlFamilyID;
+        return this.minimumrequirement.minimumrequirement.ControlFamilyID;
       } else {
         return this.ControlFamilyID;
       }

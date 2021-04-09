@@ -10,48 +10,33 @@ export const state = {
 
 export const mutations = {
   SET_PUBLICATION(state, publication) {
-    console.log("\npublication.SET_PUBLICATION()  start");
-    console.log(
-      " ... publication.SET_PUBLICATION():  publication = " + publication
-    );
     state.publication = publication;
   },
   SET_PUBLICATIONID(state, PublicationID) {
-    console.log("\npublication.SET_PUBLICATIONID()  start");
-    console.log(
-      " ... publication.SET_PUBLICATIONID():  PublicationID = " + PublicationID
-    );
     state.PublicationID = PublicationID;
   },
   SET_PUBLICATIONS(state, publications) {
-    console.log("\npublication.SET_PUBLICATIONS()  start");
-    console.log(
-      " ... publication.SET_PUBLICATIONS().publications = " + publications
-    );
     state.publications = publications;
   }
 };
 
 export const actions = {
   getPublications({ commit }) {
-    console.log("\npublication.getPublications():  start");
+    console.log("\npublication.getPublications() ... start");
+
     Service.getPublications()
       .then(response => {
-        //console.log(response.data);
         commit("SET_PUBLICATIONS", response.data);
       })
       .catch(error => {
         console.log("There was an error:" + error.response);
       });
+
+    console.log("\npublication.getPublications() ... end");
   },
   getPublication({ commit, getters }, { Publication, PublicationID }) {
-    console.log("\npublication.getPublication():  start");
-    console.log(
-      " ... publication.getPublication():  Publication = " + Publication
-    );
-    console.log(
-      " ... publication.getPublication():  PublicationID = " + PublicationID
-    );
+    console.log("\npublication.getPublication() ... start");
+
     var publication = getters.getPublicationByPublication(Publication);
 
     if (publication) {
@@ -60,8 +45,6 @@ export const actions = {
     } else {
       Service.getPublication(Publication)
         .then(response => {
-          //console.log(response);
-          //console.log(response.data[0]);
           commit("SET_PUBLICATION", response.data[0]);
           commit("SET_PUBLICATIONID", PublicationID);
         })
@@ -69,16 +52,15 @@ export const actions = {
           console.log("There was an error:" + error.response);
         });
     }
+
+    console.log("\npublication.getPublication() ... end");
   }
 };
 
 export const getters = {
   getPublicationByPublication: state => Publication => {
-    console.log("\npublication.getPublicationByPublication:  start");
-    console.log(
-      " ... publication.getPublicationByPublication.Publication = " +
-        Publication
-    );
+    console.log("\npublication.getPublicationByPublication ... start");
+
     return state.publications.find(
       publication => publication.Publication === Publication
     );

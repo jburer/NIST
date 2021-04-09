@@ -72,7 +72,7 @@ import { mapState } from "vuex";
 export default {
   props: ["Term"],
   created() {
-    console.log("\nTerm.created():  start");
+    console.log("\nTerm.created() ... start");
 
     //Data
     this.$store.dispatch("glossary/getTerm", this.tempTerm).then(
@@ -86,12 +86,12 @@ export default {
       ])
     );
 
-    console.log("\nTerm.created():  end");
+    console.log("\nTerm.created() ... end");
   },
   computed: {
     tempTerm() {
       if (this.Term === undefined) {
-        return this.$store.state.glossary.term.Term;
+        return this.glossary.term.Term;
       } else {
         return this.Term;
       }
