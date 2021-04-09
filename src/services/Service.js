@@ -28,6 +28,9 @@ export default {
       "/MinimumRequirements?ControlFamilyID=" + ControlFamilyID
     );
   },
+  getFIPS199() {
+    return nistAPI.get("/FIPS199");
+  },
   getPublications() {
     console.log("\nService.getPublications():  start");
     return nistAPI.get("/Publications");
@@ -48,5 +51,9 @@ export default {
   getGlossary() {
     console.log("\nService.getGlossary() ... start");
     return nistAPI.get("/Glossary");
+  },
+  getTerm(term) {
+    console.log(" ... Service.getTerm().term = " + term);
+    return nistAPI.get("/Glossary?Term=" + term);
   }
 };

@@ -6,6 +6,10 @@ import Step from "@/views/SP80037/Step.vue";
 import Task from "@/views/SP80037/Task.vue";
 import FIPS200 from "@/views/FIPS200/FIPS200.vue";
 import MinimumRequirement from "@/views/FIPS200/MinimumRequirement.vue";
+import FIPS199 from "@/views/FIPS199/FIPS199.vue";
+import SecurityObjective from "@/views/FIPS199/SecurityObjective.vue";
+import Impact from "@/views/FIPS199/Impact.vue";
+import SecurityCategorization from "@/views/FIPS199/SecurityCategorization.vue";
 import Publication from "@/views/Publication/Publication.vue";
 import BusinessRole from "@/views/BusinessRole/BusinessRole.vue";
 import Glossary from "@/views/Glossary/Glossary.vue";
@@ -35,6 +39,30 @@ const routes = [
     path: "/SP80037/task",
     name: "task",
     component: Task,
+    props: true
+  },
+  {
+    path: "/FIPS199",
+    name: "FIPS199",
+    component: FIPS199,
+    props: true
+  },
+  {
+    path: "/FIPS199/securityObjective",
+    name: "securityObjective",
+    component: SecurityObjective,
+    props: true
+  },
+  {
+    path: "/FIPS199/impact",
+    name: "impact",
+    component: Impact,
+    props: true
+  },
+  {
+    path: "/FIPS199/securityCategorization",
+    name: "securityCategorization",
+    component: SecurityCategorization,
     props: true
   },
   {
