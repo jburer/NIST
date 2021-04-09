@@ -35,7 +35,6 @@ export const actions = {
 
     Service.getTerm(Term)
       .then(response => {
-        console.log(response.data);
         commit("SET_TERM", response.data[0]);
       })
       .catch(error => {

@@ -24,7 +24,6 @@ export const actions = {
 
     Service.getFIPS199()
       .then(response => {
-        console.log(response.data[2].SecurityCategorizations);
         commit(
           "SET_SECURITYCATEGORIZATIONS",
           response.data[2].SecurityCategorizations
