@@ -3,7 +3,7 @@
     class="step-link"
     :to="{
       name: 'term',
-      params: { Term: Term }
+      params: { Term: Term.Term }
     }"
   >
     <div class="step-card -shadow">

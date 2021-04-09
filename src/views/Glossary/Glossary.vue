@@ -33,6 +33,8 @@ export default {
     this.sortedGlossary = this.glossary.glossary.sort((a, b) =>
       a.Term.localeCompare(b.Term)
     );
+
+    console.log("\nGlossary.created() ... end");
   },
   computed: {
     ...mapState(["breadcrumb", "glossary"])

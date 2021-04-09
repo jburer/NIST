@@ -4,14 +4,14 @@
     <table>
       <tr>
         <td class="title" colspan="2">
-          <span>{{ Term.Term }}</span>
+          <span>{{ glossary.term.Term }}</span>
         </td>
       </tr>
       <tr>
         <td align="left" valign="top">Definition:</td>
         <td align="left">
           <span
-            v-for="definition in Term.Definition"
+            v-for="definition in glossary.term.Definition"
             :key="definition[0]"
             class="li"
           >
@@ -28,11 +28,15 @@
           </span>
         </td>
       </tr>
-      <tr v-if="(Term.Synonyms = '')">
+      <tr v-if="(glossary.term.Synonyms = '')">
         <td align="left" valign="top">Synonyms:</td>
         <td align="left">
           <ul>
-            <li v-for="synonym in Term.Synonyms" :key="synonym" class="li">
+            <li
+              v-for="synonym in glossary.term.Synonyms"
+              :key="synonym"
+              class="li"
+            >
               {{ synonym }}
             </li>
           </ul>
@@ -42,7 +46,7 @@
         <td align="left" valign="top"><nobr>Defined In:</nobr></td>
         <td align="left">
           <span class="li">
-            {{ Term.DefinedIn.Publication }}
+            {{ glossary.term.DefinedIn.Publication }}
           </span>
         </td>
       </tr>
@@ -50,7 +54,7 @@
         <td align="left" valign="top">Used In:</td>
         <td align="left">
           <span
-            v-for="secondary in Term.UsedIn.Publication"
+            v-for="secondary in glossary.term.UsedIn.Publication"
             :key="secondary"
             class="li"
           >
@@ -70,30 +74,40 @@ export default {
   created() {
     console.log("\nTerm.created():  start");
 
-    this.$store.dispatch(
-      "minimumrequirement/getMinimumRequirement",
-      this.tempControlFamilyID
+    //Data
+    this.$store.dispatch("glossary/getTerm", this.tempTerm).then(
+      // Breadcrumbs
+      this.$store.dispatch("breadcrumb/setBreadcrumbs", [
+        {
+          document: "Glossary",
+          name: "glossary"
+        },
+        { document: this.glossary.term.Term }
+      ])
     );
 
-    // Breadcrumbs
-    this.$store.dispatch("breadcrumb/setBreadcrumbs", [
-      {
-        document: "Glossary",
-        name: "glossary"
-      },
-      { document: this.Term.Term }
-    ]);
+    console.log("\nTerm.created():  end");
   },
   computed: {
-    tempControlFamilyID() {
-      if (this.ControlFamilyID === undefined) {
-        return this.$store.state.minimumrequirement.minimumrequirement
-          .ControlFamilyID;
+    tempTerm() {
+      if (this.Term === undefined) {
+        return this.$store.state.glossary.term.Term;
       } else {
-        return this.ControlFamilyID;
+        return this.Term;
       }
     },
-    ...mapState(["term", "breadcrumb"])
+    ...mapState(["glossary", "breadcrumb"])
+  },
+  watch: {
+    "$store.state.glossary.term": function() {
+      this.$store.dispatch("breadcrumb/setBreadcrumbs", [
+        {
+          document: "Glossary",
+          name: "glossary"
+        },
+        { document: this.glossary.term.Term }
+      ]);
+    }
   }
 };
 </script>
