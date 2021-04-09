@@ -22,7 +22,6 @@ export const actions = {
 
     Service.getFIPS199()
       .then(response => {
-        console.log(response.data[0].SecurityObjectives);
         commit("SET_SECURITYOBJECTIVES", response.data[0].SecurityObjectives);
       })
       .catch(error => {
