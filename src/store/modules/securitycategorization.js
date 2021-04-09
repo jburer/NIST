@@ -39,6 +39,10 @@ export const actions = {
     );
   },
   getSecurityCategorization({ commit, getters }, AppliedTo) {
+    console.log(
+      "\nsecuritycategorization.getSecurityCategorization() ... start"
+    );
+
     var securityCategorization = getters.getSecurityCategorizationByAppliedTo(
       AppliedTo
     );
@@ -54,11 +58,17 @@ export const actions = {
           console.log("There was an error:" + error.response);
         });
     }
+
+    console.log("\nsecuritycategorization.getSecurityCategorization() ... end");
   }
 };
 
 export const getters = {
   getSecurityCategorizationByAppliedTo: state => AppliedTo => {
+    console.log(
+      "\nsecuritycategorization.getSecurityCategorizationByAppliedTo() ... start"
+    );
+
     return state.securityCategorizations.find(
       securityCategorization => securityCategorization.AppliedTo === AppliedTo
     );

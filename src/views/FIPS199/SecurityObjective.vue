@@ -41,13 +41,8 @@ import { mapState } from "vuex";
 
 export default {
   props: ["SecurityObjective", "PublicationID"],
-  data: () => ({
-    definition: ""
-  }),
   created() {
-    console.log("\nSecurityObjective.created() ...  start");
-
-    console.log(this.SecurityObjective);
+    console.log("\nSecurityObjective.created() ... start");
 
     //Data
     this.$store
@@ -70,24 +65,24 @@ export default {
 
     this.getTerm;
 
-    console.log("\nSecurityObjective.created() ...  end");
+    console.log("\nSecurityObjective.created() ... end");
   },
   computed: {
     tempSecurityObjective() {
       if (this.SecurityObjective === undefined) {
-        return this.$store.state.securityobjective.securityObjective
-          .SecurityObjective;
+        return this.securityobjective.securityObjective.SecurityObjective;
       } else {
         return this.SecurityObjective;
       }
     },
     getTerm() {
-      console.log("\nSecurityObjective.getTerm() ...  start");
+      console.log("\nSecurityObjective.getTerm() ... start");
+
       this.$store.dispatch(
         "glossary/getTerm",
         this.securityobjective.securityObjective.Definition.Glossary.Term
       );
-      return this.$store.state.glossary.term.Definition[0];
+      return this.glossary.term.Definition[0];
     },
     ...mapState(["securityobjective", "breadcrumb", "publication", "glossary"])
   }

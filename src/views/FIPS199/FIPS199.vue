@@ -60,7 +60,7 @@ export default {
     SecurityCategorizationCard
   },
   created() {
-    console.log("\nFIPS199.created() ...  start");
+    console.log("\nFIPS199.created() ... start");
 
     //Publication
     this.$store.dispatch("publication/getPublication", {
@@ -80,6 +80,8 @@ export default {
     this.$store.dispatch("securityobjective/getSecurityObjectives");
     this.$store.dispatch("impact/getImpacts");
     this.$store.dispatch("securitycategorization/getSecurityCategorizations");
+
+    console.log("\nFIPS199.created() ... end");
   },
   computed: {
     Publication() {

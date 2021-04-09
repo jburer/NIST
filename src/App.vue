@@ -13,9 +13,12 @@ export default {
     NavBar
   },
   created() {
-    console.log("\nApp.created():  start");
+    console.log("\nApp.created() ... start");
+
     this.$store.dispatch("businessrole/getBusinessRoles");
     this.$store.dispatch("publication/getPublications");
+
+    console.log("\nApp.created() ... end");
   }
 };
 </script>

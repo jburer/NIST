@@ -21,19 +21,26 @@ export default {
     MinimumRequirementCard
   },
   created() {
-    console.log("\nFIPS200.created():  start");
+    console.log("\nFIPS200.created() ... start");
 
+    //Publication
     this.$store.dispatch("publication/getPublication", {
       Publication: this.Publication,
       PublicationID: this.PublicationID
     });
+
+    //Breadcrumb
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
       {
         document: this.publication.publication.Publication,
         name: this.publication.PublicationID
       }
     ]);
+
+    //Data
     this.$store.dispatch("minimumrequirement/getMinimumRequirements");
+
+    console.log("\nFIPS200.created() ... start");
   },
   computed: {
     Publication() {

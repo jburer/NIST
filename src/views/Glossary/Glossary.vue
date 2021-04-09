@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Title :title="title" />
+    <Title :Title="title" />
     <TermCard v-for="term in sortedGlossary" :key="term.Term" :Term="term" />
   </div>
 </template>
@@ -22,14 +22,16 @@ export default {
   created() {
     console.log("\nGlossary.created() ... start");
 
+    //Breadcrumbs
     this.$store.dispatch("breadcrumb/setBreadcrumbs", [
       {
         document: "Glossary",
         name: "glossary"
       }
     ]);
-    this.$store.dispatch("glossary/getGlossary");
 
+    //Data
+    this.$store.dispatch("glossary/getGlossary");
     this.sortedGlossary = this.glossary.glossary.sort((a, b) =>
       a.Term.localeCompare(b.Term)
     );

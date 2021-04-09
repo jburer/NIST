@@ -22,7 +22,6 @@ export const actions = {
 
     Service.getFIPS199()
       .then(response => {
-        console.log(response.data[1].Impacts);
         commit("SET_IMPACTS", response.data[1].Impacts);
       })
       .catch(error => {

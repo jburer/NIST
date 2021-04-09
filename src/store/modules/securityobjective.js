@@ -56,6 +56,10 @@ export const actions = {
 
 export const getters = {
   getSecurityObjectiveBySecurityObjective: state => SecurityObjective => {
+    console.log(
+      "\nsecurityobjective.getSecurityObjectiveBySecurityObjective() ... start"
+    );
+
     return state.securityObjectives.find(
       securityObjective =>
         securityObjective.SecurityObjective === SecurityObjective
