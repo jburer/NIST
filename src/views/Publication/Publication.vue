@@ -33,7 +33,7 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   created() {
-    console.log("\n... Publication.create():  start");
+    console.log("\nPublication.create() ... start");
   },
   computed: {
     ...mapState(["publication"])
