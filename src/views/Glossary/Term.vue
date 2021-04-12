@@ -71,6 +71,13 @@ import { mapState } from "vuex";
 
 export default {
   props: ["Term"],
+  /*
+  props: {
+    shindig: {
+      type: Object,
+      required: true
+    },
+  */
   created() {
     console.log("\nTerm.created() ... start");
 
@@ -111,14 +118,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.title {
-  font-weight: bold;
-  font-size: large;
-  text-align: left;
-}
-.li {
-  padding: 5px;
-}
-</style>

@@ -1,49 +1,84 @@
 <template>
-  <router-link
-    class="step-link"
-    :to="{
-      name: 'term',
-      params: { Term: Term.Term }
-    }"
-  >
-    <div class="step-card -shadow">
-      <table>
-        <tr>
-          <td align="left">
-            <span class="eyebrow">{{ Term.Term }}</span>
-          </td>
-        </tr>
-      </table>
+  <div class="step-card -shadow">
+    <table>
+      <tr>
+        <td align="left">
+          <v-dialog v-model="dialog" width="500" overlay-opacity="0">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn v-bind="attrs" v-on="on" class="ma-0 pa-1">
+                {{ Term.Term }}
+              </v-btn>
+            </template>
 
-      <span></span>
-    </div>
-  </router-link>
+            <v-card>
+              <v-card-title class="headline grey lighten-2">
+                <v-icon class="mr-2">mdi-book</v-icon>
+                {{ Term.Term }}
+              </v-card-title>
+
+              <v-card-text>
+                <v-spacer></v-spacer>
+                <span
+                  v-for="definition in Term.Definition"
+                  :key="definition[0]"
+                >
+                  <span v-if="typeof definition === 'object'">
+                    <ul>
+                      <li v-for="item in definition.List" :key="item">
+                        {{ item }}
+                      </li>
+                    </ul>
+                  </span>
+                  <span v-else>
+                    {{ definition }}
+                  </span>
+                </span>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" text @click="dialog = false" icon>
+                  <v-icon>mdi-book</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
-  props: ["Term"]
+  name: "Term",
+  props: {
+    Term: {
+      type: Object,
+      required: true
+    }
+  },
+  data: () => ({
+    dialog: false
+  }),
+  created() {
+    console.log("\nTerm.created() ... start");
+
+    //Data
+    this.$store.dispatch("glossary/getTerm", this.tempTerm);
+
+    console.log("\nTerm.created() ... end");
+  },
+  computed: {
+    tempTerm() {
+      if (this.Term === undefined) {
+        return this.glossary.term.Term;
+      } else {
+        return this.Term;
+      }
+    },
+    ...mapState(["glossary"])
+  }
 };
 </script>
-
-<style scoped>
-.step-card {
-  padding: 0 15px;
-  /*margin-bottom: 24px;*/
-  transition: all 0.2s linear;
-  cursor: pointer;
-}
-.step-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.19);
-}
-.step-card > .title {
-  margin: 0;
-}
-
-.step-link {
-  color: black;
-  text-decoration: none;
-  font-weight: 100;
-}
-</style>
